@@ -208,9 +208,9 @@ class Resolver {
           aborted = true;
         }
 
-        console.error(
-          `${server} could not resolve ${hostname} record ${recordType}`
-        );
+        // console.error(
+        //   `${server} could not resolve ${hostname} record ${recordType}`
+        // );
       } finally {
         this._abortControllers = this._abortControllers.filter(
           c => c !== controller
@@ -264,9 +264,9 @@ class Resolver {
           aborted = true;
         }
 
-        console.error(
-          `${server} could not resolve ${hostname} record ${recordType}`
-        );
+        // console.error(
+        //   `${server} could not resolve ${hostname} record ${recordType}`
+        // );
       } finally {
         this._abortControllers = this._abortControllers.filter(
           c => c !== controller
@@ -322,9 +322,9 @@ class Resolver {
           aborted = true;
         }
 
-        console.error(
-          `${server} could not resolve ${hostname} record ${recordType}`
-        );
+        // console.error(
+        //   `${server} could not resolve ${hostname} record ${recordType}`
+        // );
       } finally {
         this._abortControllers = this._abortControllers.filter(
           c => c !== controller

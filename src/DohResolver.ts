@@ -19,7 +19,7 @@ class DohResolver {
   dohResolver;
   /** 用于控制实例的DOH开关状态 */
   isDOHEnable = true;
-
+  log = () => {};
   constructor() {
     this.dohResolver = new DnsOverHttpResolver({
       maxCache: 0,
@@ -34,8 +34,15 @@ class DohResolver {
   setDOHEnable = (isEnable: boolean) => {
     this.isDOHEnable = isEnable;
   };
-  resolverV4Host = (hostname: string) => {
-    return this["dohResolver"]?.resolve4(hostname);
+
+  /**
+   * Uses the DNS protocol to resolve the given host name into the appropriate DNS record
+   *
+   * @param {string} hostname - host name to resolve
+   * @param {string} [rrType = 'A'] - resource record type
+   */
+  resolver = (hostname: string, rrType: string = "A") => {
+    return this["dohResolver"]?.resolve(hostname, rrType);
   };
   resolverUrl = async (targetUrl: string) => {
     if (!this.isDOHEnable) return targetUrl;
@@ -47,6 +54,21 @@ class DohResolver {
     const resultIp = getIpFromAnswer(result);
     if (!resultIp) return targetUrl;
     url.hostname = resultIp;
+    url.host = "";
+    return url.toString();
+  };
+  resolverUrl6 = async (targetUrl: string) => {
+    if (!this.isDOHEnable) return targetUrl;
+    if (!targetUrl) return targetUrl;
+    const url = new URL(targetUrl);
+    if (!url.hostname) return targetUrl;
+    if (net.isIPv6(url.hostname)) return targetUrl;
+    const result = await this.dohResolver.resolve6(url.hostname);
+    console.log(result, "result");
+    const resultIp = getIpFromAnswer(result);
+    console.log(resultIp, "resultIp");
+    if (!resultIp) return targetUrl;
+    url.hostname = `[${resultIp}]`;
     url.host = "";
     return url.toString();
   };

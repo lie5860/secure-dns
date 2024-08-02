@@ -11,10 +11,13 @@ describe("DohResolver", () => {
       "http://127.0.0.1/test"
     );
   });
+  it("test resolver url6", async () => {
+    expect(
+      await dohResolver.resolverUrl6("http://nas6.lie5860.top/test")
+    ).toEqual("http://[2408:8248:201:1d20:211:32ff:fe12:3457]/test");
+  });
   it("test get host", async () => {
-    expect(await dohResolver.resolverV4Host("local.saki.cc")).toEqual([
-      "127.0.0.1",
-    ]);
+    expect(await dohResolver.resolver("local.saki.cc")).toEqual(["127.0.0.1"]);
   });
   it("test disabled doh", async () => {
     const dohResolver = new DohResolver();

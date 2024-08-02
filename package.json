@@ -1,6 +1,6 @@
 {
-  "name": "@lie5860/secure-dns-test",
-  "version": "0.1.0",
+  "name": "node-secure-dns",
+  "version": "0.1.2",
   "module": "./dist/index.js",
   "type": "module",
   "exports": {
