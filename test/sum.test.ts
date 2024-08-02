@@ -1,8 +1,26 @@
 import { describe, expect, it } from "vitest";
-import { sum } from "../src/sum";
+import DohResolver from "../src/DohResolver";
 
-describe("add", () => {
-  it("should sum of 2 and 3 equals to 5", () => {
-    expect(sum(2, 3)).toEqual(5);
+describe("DohResolver", () => {
+  const dohResolver = new DohResolver();
+  it("should be a class", () => {
+    expect(DohResolver).toBeInstanceOf(Function);
+  });
+  it("test resolver url", async () => {
+    expect(await dohResolver.resolverUrl("http://local.saki.cc/test")).toEqual(
+      "http://127.0.0.1/test"
+    );
+  });
+  it("test get host", async () => {
+    expect(await dohResolver.resolverV4Host("local.saki.cc")).toEqual([
+      "127.0.0.1",
+    ]);
+  });
+  it("test disabled doh", async () => {
+    const dohResolver = new DohResolver();
+    dohResolver.setDOHEnable(false);
+    expect(await dohResolver.resolverUrl("http://local.saki.cc/")).toEqual(
+      "http://local.saki.cc/"
+    );
   });
 });

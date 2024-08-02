@@ -1,12 +1,12 @@
 {
-  "name": "vite-vanilla-ts-lib-starter",
+  "name": "secure-dns",
   "private": true,
   "version": "0.0.4",
-  "module": "./dist/vite-vanilla-ts-lib-starter.js",
+  "module": "./dist/secure-dns.js",
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/vite-vanilla-ts-lib-starter.js"
+      "import": "./dist/secure-dns.js"
     },
     "./dist/": {
       "import": "./dist/"
@@ -49,8 +49,14 @@
     "stylelint-order": "^6.0.4",
     "stylelint-prettier": "^5.0.2",
     "ts-node": "^10.9.2",
+    "@types/dns-packet": "^5.2.4",
     "typescript": "^5.3.3",
     "vite": "^5.3.5",
     "vitest": "^2.0.4"
+  },
+  "dependencies": {
+    "dns-packet": "^5.4.0",
+    "receptacle": "^1.3.2",
+    "undici": "^5.16.0"
   }
 }

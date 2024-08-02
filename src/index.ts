@@ -1,3 +1,2 @@
-import "./style.css";
-
-export { sum } from "./sum";
+import DohResolver from "./DohResolver";
+export { DohResolver };
