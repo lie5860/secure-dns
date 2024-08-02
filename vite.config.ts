@@ -16,8 +16,8 @@ const getPackageNameCamelCase = () => {
 };
 
 const fileName = {
-  es: `${getPackageName()}.js`,
-  cjs: `${getPackageName()}.cjs`,
+  es: `index.js`,
+  cjs: `index.cjs`,
   // 我这个只能给 nodejs 用 应该 iife 是没必要的
   // iife: `${getPackageName()}.iife.js`,
 };
@@ -30,7 +30,7 @@ export default defineConfig({
     outDir: "./dist",
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
-      name: getPackageNameCamelCase(),
+      name: "index",
       formats,
       fileName: format => fileName[format],
     },
