@@ -25,3 +25,5 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+yarn.lock
+pnpm-lock.yaml

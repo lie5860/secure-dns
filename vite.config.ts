@@ -17,8 +17,7 @@ const getPackageNameCamelCase = () => {
 
 const fileName = {
   es: `${getPackageName()}.js`,
-  cjs: `${getPackageName()}.cjs.js`,
-  umd: `${getPackageName()}.umd.js`,
+  cjs: `${getPackageName()}.cjs`,
   // 我这个只能给 nodejs 用 应该 iife 是没必要的
   // iife: `${getPackageName()}.iife.js`,
 };
@@ -28,12 +27,15 @@ const formats = Object.keys(fileName) as Array<keyof typeof fileName>;
 export default defineConfig({
   base: "./",
   build: {
-    outDir: "./build/dist",
+    outDir: "./dist",
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
       name: getPackageNameCamelCase(),
       formats,
       fileName: format => fileName[format],
+    },
+    rollupOptions: {
+      external: ["dns-packet", "receptacle", "undici", "net"],
     },
   },
   test: {

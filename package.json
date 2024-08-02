@@ -1,21 +1,25 @@
 {
-  "name": "secure-dns",
-  "private": true,
-  "version": "0.0.4",
-  "module": "./dist/secure-dns.js",
+  "name": "node-secure-dns-test",
+  "version": "0.0.12",
+  "module": "./dist/node-secure-dns-test.js",
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/secure-dns.js"
+      "import": "./dist/node-secure-dns-test.js",
+      "require": "./dist/node-secure-dns-test.cjs"
     },
     "./dist/": {
       "import": "./dist/"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lie5860/secure-dns"
+  },
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite --host",
-    "build": "rimraf build/**/* && tsc && vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts && copyfiles ./package.json build",
+    "build": "rimraf dist/**/* && tsc && vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "lint:scripts": "eslint . --ext .ts",
@@ -55,6 +59,11 @@
     "vitest": "^2.0.4"
   },
   "dependencies": {
+    "dns-packet": "^5.4.0",
+    "receptacle": "^1.3.2",
+    "undici": "^5.16.0"
+  },
+  "peerDependencies": {
     "dns-packet": "^5.4.0",
     "receptacle": "^1.3.2",
     "undici": "^5.16.0"
