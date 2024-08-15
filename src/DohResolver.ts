@@ -64,9 +64,7 @@ class DohResolver {
     if (!url.hostname) return targetUrl;
     if (net.isIPv6(url.hostname)) return targetUrl;
     const result = await this.dohResolver.resolve6(url.hostname);
-    console.log(result, "result");
     const resultIp = getIpFromAnswer(result);
-    console.log(resultIp, "resultIp");
     if (!resultIp) return targetUrl;
     url.hostname = `[${resultIp}]`;
     url.host = "";
