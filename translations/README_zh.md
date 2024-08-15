@@ -13,29 +13,36 @@ Node-Secure-DNS 是一个使用 Node.js 编写的库，其使用 DNS over HTTPS 
 ```bash
 npm install node-secure-dns
 ```
+
 ## 使用方法
+
 ```javascript
-import DohResolver from 'node-secure-dns';
+import DohResolver from "node-secure-dns";
 
 const dohResolver = new DohResolver();
 
 // 设置 DoH 服务器
-dohResolver.setDOHResolverServer(['https://cloudflare-dns.com/dns-query', 'https://dns.google/resolve']);
+dohResolver.setDOHResolverServer([
+  "https://cloudflare-dns.com/dns-query",
+  "https://dns.google/resolve",
+]);
 
 // 启用 DoH
 dohResolver.setDOHEnable(true);
 
 // 解析 hostname
-const result = await dohResolver.resolver('example.com');
+const result = await dohResolver.resolver("example.com");
 console.log(result); // 打印出解析结果
 
 // 解析 URL
-const resultUrl = await dohResolver.resolverUrl('http://example.com/path');
+const resultUrl = await dohResolver.resolverUrl("http://example.com/path");
 console.log(resultUrl); // 打印出解析后的 URL
 
 // 解析 IPv6 URL
-const resultUrl6 = await dohResolver.resolverUrl6('http://example.com/path');
+const resultUrl6 = await dohResolver.resolverUrl6("http://example.com/path");
 console.log(resultUrl6); // 打印出解析后的 URL
 ```
+
 ## 反馈
+
 如果有任何疑问或建议，欢迎提 Issue 或 Pull Request。
