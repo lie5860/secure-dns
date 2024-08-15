@@ -1,6 +1,6 @@
 # Node-Secure-DNS
 
-Node-Secure-DNS 是一个使用 Node.js 编写的库，其使用 DNS over HTTPS (DoH) 解析域名。这样你就可以在那些可能对 DNS 请求进行篡改或监控的环境中，更安全地进行 DNS 解析。
+Node-Secure-DNS 是一个使用 Node.js 编写的库，其使用 DNS over HTTPS (DoH) 解析域名。这样在面对 DNS 请求可能受到篡改或监控的环境中，获取到正确的结果。
 
 ## 主要特性
 

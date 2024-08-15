@@ -1,7 +1,6 @@
 ## Node-Secure-DNS
 
-Node-Secure-DNS is a library written in Node.js that resolves domain names using DNS over HTTPS (DoH). This allows for more secure DNS resolution in environments where DNS requests may be subject to tampering or monitoring.
-
+Node-Secure-DNS is a library written in Node.js that resolves domain names using DNS over HTTPS (DoH). This ensures that correct results are obtained in environments where DNS requests may be tampered with or monitored.
 [English](./README.md) | [中文](./translations/README_zh.md)
 
 ## Key Features
